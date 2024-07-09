@@ -67,7 +67,7 @@ contract Homework1{
     // Которая будет удалять значение из массива с уменьшением его длины;
     function deleteElem(uint _id) public{
         require(_id < interacted.length, "Incorrect id");
-        interacted[_id] = interacted[_id-1];
+        interacted[_id] = interacted[interacted.length-1];
         interacted.pop();
     }
 
