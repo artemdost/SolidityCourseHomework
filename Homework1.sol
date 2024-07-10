@@ -20,10 +20,6 @@ contract Homework1{
     // Создать 2 модификатора: на проверку владельца и проверку нулевого адреса
     modifier isOwner(){
         require(msg.sender == owner, "You are not an owner");
-        _;
-    }
-
-    modifier IsZero(){
         require(msg.sender != address(0), "Address is zero");
         _;
     }
@@ -49,7 +45,7 @@ contract Homework1{
     AddressInfo[] public addressData;
 
     // Изменение адреса владельца контракта с проверкой на нулевой адрес;
-    function changeOwner(address _newOwner) public IsZero{
+    function changeOwner(address _newOwner) public isOwner{
         owner = _newOwner;
     }
 
@@ -67,7 +63,7 @@ contract Homework1{
     // Которая будет удалять значение из массива с уменьшением его длины;
     function deleteElem(uint _id) public{
         require(_id < interacted.length, "Incorrect id");
-        interacted[_id] = interacted[_id-1];
+        interacted[_id] = interacted[interacted.length-1];
         interacted.pop();
     }
 
