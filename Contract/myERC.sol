@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 abstract contract myERC is IERC20 {
     uint256 _totalSupply;
+    address owner;
 
     mapping(address => uint256) _balances;
     mapping(address account => mapping(address spender => uint256)) private _allowances;
