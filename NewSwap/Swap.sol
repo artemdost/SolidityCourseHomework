@@ -16,7 +16,7 @@ contract Swap{
         second = Second(0xcABA4B9660824F1D4afC888D7995A023391C9e2f);
     }
 
-    struct OwnsTokens{
+    struct OwnsTokens{ // структура, в которой указывается сколько токенов пришло от данного пользователя
         uint first;
         uint second;
     }
@@ -25,9 +25,9 @@ contract Swap{
 
     function swap(uint _tokenId, uint256 amount) public{
         if (_tokenId == 1){
-            userLiq[msg.sender].first = first.balanceOf(address(this));
-            require(userLiq[msg.sender].first >= amount, "User did not send enought funds to swap");
-            second.transfer(msg.sender, amount);
+            userLiq[msg.sender].first = first.balanceOf(address(this)); // обновляем данные о состоянии баланса структуры
+            require(userLiq[msg.sender].first >= amount, "User did not send enought funds to swap"); // проверяем прислал ли юзер деньги
+            second.transfer(msg.sender, amount); // отправляем если все ок
         } else if (_tokenId == 2){
             userLiq[msg.sender].second = second.balanceOf(address(this));
             require(userLiq[msg.sender].second >= amount, "User did not send enought funds to swap");
@@ -35,7 +35,7 @@ contract Swap{
         }
     }
 
-    function currentLiq() public returns (uint, uint){
+    function currentLiq() public returns (uint, uint){ // просто функция посмотреть баланс структур
         userLiq[msg.sender].first = first.balanceOf(address(this));
         userLiq[msg.sender].second = second.balanceOf(address(this));
         return (userLiq[msg.sender].first, userLiq[msg.sender].second);
