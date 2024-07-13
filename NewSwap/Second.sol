@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
-import "./myERC.sol";
+import "./ERC20.sol";
 
 /**
  * @author  .
@@ -11,10 +11,9 @@ import "./myERC.sol";
  * @notice  .
  */
 
-contract FRST is myERC {
+contract Second is ERC20 {
 
-    address owner;
-    constructor(string memory name_, string memory symbol_, uint256 initialSupply) myERC(name_, symbol_) {
+    constructor(string memory name_, string memory symbol_, uint256 initialSupply) ERC20(name_, symbol_) {
         owner = msg.sender;
         Mint(initialSupply);
     }

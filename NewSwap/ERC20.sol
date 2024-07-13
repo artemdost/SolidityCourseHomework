@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "./IERC20.sol";
 
-abstract contract myERC is IERC20 {
+abstract contract ERC20 is IERC20 {
     uint256 _totalSupply;
     bool work = true;
     address owner;
 
     mapping(address => uint256) _balances;
-    mapping(address account => mapping(address spender => uint256)) private _allowances;
+    mapping(address account => mapping(address spender => uint256)) public _allowances;
 
     string private _name;
     string private _symbol;
@@ -84,8 +84,8 @@ abstract contract myERC is IERC20 {
      * zero by default.
      * This value changes when {approve} or {transferFrom} are called.
      */
-    function allowance(address owner, address spender) public view returns (uint256){
-        return _allowances[owner][spender];
+    function allowance(address _owner, address spender) public view returns (uint256){
+        return _allowances[_owner][spender];
     }
 
     /**

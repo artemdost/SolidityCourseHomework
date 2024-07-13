@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.20;
 
-import "./myERC.sol";
+import "./ERC20.sol";
 
 /**
  * @author  .
@@ -11,10 +11,9 @@ import "./myERC.sol";
  * @notice  .
  */
 
-contract FRST is myERC {
+contract First is ERC20 {
 
-    address owner;
-    constructor(string memory name_, string memory symbol_, uint256 initialSupply) myERC(name_, symbol_) {
+    constructor(string memory name_, string memory symbol_, uint256 initialSupply) ERC20(name_, symbol_) {
         owner = msg.sender;
         Mint(initialSupply);
     }
