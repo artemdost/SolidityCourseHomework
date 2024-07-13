@@ -23,5 +23,6 @@ contract FRST is myERC {
     function Mint(uint _toMint) public isOwner(){
         _totalSupply += _toMint;
         _balances[owner] += _toMint;
+        emit Transfer(address(0), owner, _toMint);
     } 
 }

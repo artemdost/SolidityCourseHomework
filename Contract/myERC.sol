@@ -5,7 +5,10 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 abstract contract myERC is IERC20 {
     uint256 _totalSupply;
+<<<<<<< HEAD
     bool work = true;
+=======
+>>>>>>> 7cf06fd01f31a08ce1a5812a56438af4ce3fb794
     address owner;
 
     mapping(address => uint256) _balances;
