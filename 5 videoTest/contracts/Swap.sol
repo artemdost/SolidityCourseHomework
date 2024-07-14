@@ -30,12 +30,12 @@ contract Swap{
 
         if (_tokenId == 1){
             uint _amount = msg.value / token1price;
-//            require(first.balanceOf(address(this)) - _amount >= 0, "Insufficient balance");
+            require(first.balanceOf(address(this)) - _amount >= 0, "Insufficient balance");
             first.transfer(msg.sender, _amount * 10 ** first.decimals());
 
         } else {
             uint _amount = msg.value / token2price;
-//            require(second.balanceOf(address(this)) - _amount >= 0, "Insufficient balance"); 
+            require(second.balanceOf(address(this)) - _amount >= 0, "Insufficient balance"); 
             second.transfer(msg.sender, _amount * 10 ** second.decimals());
         }   
     }
