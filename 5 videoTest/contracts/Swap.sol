@@ -40,7 +40,7 @@ contract Swap{
         }   
     }
     
-    function swap(uint _tokenId, uint256 amount) public returns (bool){
+    function swap(uint _tokenId, uint256 amount) public returns (bool){ // amount вводим в формате x * 10 ** decimals.
 
         if (_tokenId == 1){ // меняем первый токен на второй
             require(first.allowance(msg.sender, address(this)) - amount >= 0, "Insufficient allowance");
